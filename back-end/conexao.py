@@ -1,24 +1,20 @@
-import psycopg2 as ps
+import psycopg2
 from dotenv import load_dotenv
-import os 
+import os
 
-# carregar variaveis 
-load_dotenv()
-
-params = {
-    "dbname": os.getenv("DB_NAME"),
-    "user": os.getenv("DB_USER"),
-    "password": os.getenv("DB_PASSWORD"),
-    "host": os.getenv("DB_HOST"),
-    "port": os.getenv("DB_PORT"),
-}
+load_dotenv()  # Carrega as variáveis do .env
 
 def conectar():
     try:
-        conexao = ps.connect(**params)
+        conexao = psycopg2.connect(
+            dbname=os.getenv("DB_NAME"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASSWORD"),
+            host=os.getenv("DB_HOST"),
+            port=os.getenv("DB_PORT")
+        )
         cursor = conexao.cursor()
-        print("deu certo!")
         return conexao, cursor
     except Exception as erro:
-        print(f"erro de conexao{ erro}")
+        print(f"Erro ao conectar ao banco de dados: {erro}")
         return None, None
