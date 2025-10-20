@@ -35,8 +35,6 @@ def ad_produto(nome_do_produto,categoria,preco,quantidade):
             conexao.commit()
         except Exception as erro:
             print(f"Erro ao adiconar produto {erro}")
-        else:
-            print("produto adicionado com sucesso!✔")
         finally:
             cursor.close()
             conexao.close()
@@ -70,5 +68,18 @@ def atualizar_preco_quantidade(preco, quantidade, id_produto):
         else:
             print("Preço e quantidade atualizados com sucesso!")
         finally:
+            cursor.close()
+            conexao.close()
+
+def excluir_produto(id_produto):
+    conexao, cursor = conectar()
+    if conexao:
+        try: 
+            cursor.execute(
+                "DELETE FROM loja WHERE id = %s", (id_produto,)
+            )
+            conexao.commit()
+        except Exception as erro:
+            print(f"erro ao deletar filme: {erro}")
             cursor.close()
             conexao.close()
