@@ -40,3 +40,18 @@ def ad_produto(nome_do_produto,categoria,preco,quantidade):
         finally:
             cursor.close()
             conexao.close()
+
+def listar_produtos():
+    conexao, cursor = conectar()
+    if conexao: 
+        try:
+            cursor.execute(
+                "SELECT * FROM loja ORDER BY id"
+            )
+            return cursor.fetchall()
+        except Exception as erro:
+            print(f"Erro ao listar filmes {erro}")
+            return[]
+        finally:
+            cursor.close()
+            conexao.close()
