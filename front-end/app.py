@@ -26,7 +26,7 @@ elif menu == "Adicionar produto":
     s.subheader('➕ Adicionar produto')
     nome = s.text_input("Nome do produto")
     categoria = s.text_input("Categoria")
-    preco = s.number_input("Preço", min_value=0.0, step=0.01, format="%.2f")
+    preco = s.number_input("Preço", min_value=0.0, step=0.01)
     quantidade = s.number_input("Quantidade", min_value=0, step=1)
 
     if s.button("Salvar produto"):
