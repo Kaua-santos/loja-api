@@ -28,15 +28,14 @@ def adicionar_produtos(nome_produto: str,categoria: str,preco: float,quantidade:
     return {"mensagem": "Produto adicionado com sucesso!✔"}
 
 
-
 @app.put("/loja/{id_produto}")
-def atualizar_produtos(preco: float, quantidade: int, id_produto: int):
-    produto = f.listar_produtos()
-    if produto:
-        f.atualizar_preco_quantidade(preco, quantidade, id_produto)
-        return {"mensagem": "Produto atualizado ✔"}
-    else:
-        return{"erro": "Erro ao atualizar produto"}
+def atualizar_produto(id_produto: int, novo_preco: float, nova_quantidade: int):
+    f.atualizar_preco_quantidade(novo_preco,nova_quantidade,id_produto)
+    return {
+        "mensagem": f"Produto {id_produto} atualizado com sucesso!",
+        "novo_preco": novo_preco,
+        "nova_quantidade": nova_quantidade
+}
 
 
 @app.delete("/loja/{id_produto}")
