@@ -72,3 +72,19 @@ elif menu == "Deletar produto":
             s.success("Produto deletado com sucesso ✅")
         else:
             s.error("Erro ao deletar produto ❌")
+
+if menu == "Produtos":
+    response = r.get(f"{API_URL}/loja")
+    if response.status_code == 200:
+        produtos = response.json().get("loja", [])
+
+        response_valor = r.get(f"{API_URL}/loja/valor_estoque")
+        if response_valor.status_code == 200:
+                total_estoque = response_valor.json().get("valor_total_estoque", 0)
+                s.markdown(f"### 💰 Valor total do estoque: R$ {total_estoque:.2f}")
+        else:
+                s.warning("Não foi possível obter o valor total do estoque")
+    else:
+            s.info("Nenhum produto encontrado")
+else:
+        s.error("Erro ao conectar com a API")

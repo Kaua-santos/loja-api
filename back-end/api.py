@@ -45,3 +45,8 @@ def deletar_produto(id_produto: int):
         return {"mensagem": "Produto deletado ✔"}
     else: 
         return {"erro": "Erro ao deletar produto"}
+    
+@app.get("/loja/valor_estoque")
+def obter_valor_estoque():
+    total = f.valor_total_estoque()
+    return {"valor_total_estoque": total}

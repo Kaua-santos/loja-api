@@ -81,3 +81,18 @@ def excluir_produto(id_produto):
             cursor.close()
             conexao.close()
 
+def valor_total_estoque():
+    conexao, cursor = conectar()
+    if conexao:
+        try:
+            cursor.execute(
+                "SELECT SUM(preco * quantidade) FROM loja"
+            )
+            resultado = cursor.fetchone()
+            return resultado[0] if resultado[0] is not None else 0
+        except Exception as erro:
+            print(f"Erro ao calcular valor total do estoque: {erro}")
+            return 0
+        finally:
+            cursor.close()
+            conexao.close()
