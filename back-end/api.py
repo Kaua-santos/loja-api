@@ -37,37 +37,8 @@ def atualizar_produto(id_produto: int, novo_preco: float, nova_quantidade: int):
         "nova_quantidade": nova_quantidade
 }
 
-
 @app.delete("/loja/{id_produto}")
 def deletar_produto(id_produto: int):
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     produto = f.listar_produtos()
     if produto:
         f.excluir_produto(id_produto)

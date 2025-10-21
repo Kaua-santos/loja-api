@@ -63,11 +63,9 @@ elif menu == "Atualizar produto":
         else:
             s.error("Erro ao atualizar produto ❌")
 
-
 elif menu == "Deletar produto":
     s.subheader("Deletar produto")
     id_produto = s.number_input("ID do produto para deletar", min_value=1, step=1)
-
     if s.button("Deletar"):
         response = r.delete(f"{API_URL}/loja/{id_produto}")
         if response.status_code == 200:
