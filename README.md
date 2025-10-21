@@ -59,4 +59,3 @@ Botão "Atualizar": Clique para atualizar as informações.
 
 Após clicar em "Atualizar", uma mensagem de sucesso será exibida, mostrando o ID do produto atualizado, o novo preço e a nova quantidade.
 
-[Texto do Link](https://github.com/Kaua-santos/loja-api)
